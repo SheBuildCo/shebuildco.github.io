@@ -1,56 +1,77 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Restoration Field Guide — SheBuild</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
-
   :root {
-    --charcoal: #1a1d21;
-    --slate: #252930;
-    --slate-mid: #2e333c;
-    --slate-light: #3a404c;
-    --border: #3f4553;
-    --amber: #f59e0b;
-    --amber-light: #fbbf24;
-    --amber-dim: rgba(245,158,11,0.12);
-    --amber-border: rgba(245,158,11,0.3);
-    --text-primary: #f0f2f5;
-    --text-secondary: #8b95a8;
-    --text-muted: #5a6272;
-    --green: #22c55e;
-    --green-dim: rgba(34,197,94,0.1);
-    --red: #ef4444;
-    --red-dim: rgba(239,68,68,0.1);
-    --blue: #60a5fa;
-    --blue-dim: rgba(96,165,250,0.1);
-    --mono: 'IBM Plex Mono', monospace;
-    --sans: 'Inter', sans-serif;
-    --radius: 8px;
-    --radius-lg: 12px;
+    /* ── SheBuild Brand ── */
+    --brand-primary:   #583821;
+    --brand-secondary: #EBE1D2;
+
+    /* ── Derived palette ── */
+    --bg:              #F7F4EF;
+    --surface:         #FFFFFF;
+    --surface-raised:  #EBE1D2;
+    --surface-sunken:  #F0EBE3;
+    --border:          #D4C9B8;
+    --border-strong:   #C0B09C;
+
+    /* ── Text ── */
+    --text-primary:    #1A1008;
+    --text-secondary:  #6B5744;
+    --text-muted:      #9C876E;
+
+    /* ── Accent (warm gold — pulled from primary brown family) ── */
+    --accent:          #583821;
+    --accent-mid:      #8B5E3C;
+    --accent-light:    #C4873A;
+    --accent-dim:      rgba(88,56,33,0.08);
+    --accent-border:   rgba(88,56,33,0.2);
+
+    /* ── Status ── */
+    --green:           #3D7A52;
+    --green-dim:       rgba(61,122,82,0.1);
+    --green-border:    rgba(61,122,82,0.25);
+    --red:             #B94040;
+    --red-dim:         rgba(185,64,64,0.08);
+    --red-border:      rgba(185,64,64,0.2);
+    --blue:            #3A6EA8;
+    --blue-dim:        rgba(58,110,168,0.08);
+    --blue-border:     rgba(58,110,168,0.2);
+    --purple:          #7B5EA7;
+    --purple-dim:      rgba(123,94,167,0.08);
+    --purple-border:   rgba(123,94,167,0.2);
+    --orange:          #C46A28;
+    --orange-dim:      rgba(196,106,40,0.08);
+
+    /* ── Typography ── */
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+    --radius:    6px;
+    --radius-lg: 10px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: var(--sans);
-    background: var(--charcoal);
+    font-family: var(--font);
+    background: var(--bg);
     color: var(--text-primary);
-    min-height: 100vh;
     font-size: 14px;
     line-height: 1.6;
   }
 
   /* ── TOP BAR ── */
   .topbar {
-    background: var(--slate);
-    border-bottom: 1px solid var(--border);
+    background: var(--brand-primary);
     padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 56px;
+    height: 52px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -58,100 +79,102 @@
   .topbar-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
   .brand-badge {
-    font-family: var(--mono);
+    font-family: var(--font);
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--amber);
-    background: var(--amber-dim);
-    border: 1px solid var(--amber-border);
-    padding: 3px 8px;
-    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--brand-primary);
+    background: var(--brand-secondary);
+    padding: 3px 9px;
+    border-radius: 3px;
+    text-transform: uppercase;
   }
   .brand-name {
     font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    letter-spacing: 0.02em;
+    font-weight: 500;
+    color: rgba(235,225,210,0.7);
+    letter-spacing: 0.01em;
   }
   .topbar-meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(235,225,210,0.45);
     text-align: right;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   /* ── HERO ── */
   .hero {
-    padding: 48px 24px 36px;
-    max-width: 900px;
+    padding: 44px 28px 32px;
+    max-width: 860px;
     margin: 0 auto;
+    border-bottom: 1px solid var(--border);
   }
   .hero-eyebrow {
-    font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--amber);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent-mid);
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .hero h1 {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -0.02em;
+    color: var(--brand-primary);
   }
-  .hero h1 span { color: var(--amber); }
   .hero-sub {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-secondary);
     max-width: 560px;
-    line-height: 1.7;
-    margin-bottom: 28px;
+    line-height: 1.75;
+    margin-bottom: 24px;
   }
   .standards-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
   .std-tag {
-    font-family: var(--mono);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 3px 9px;
+    border-radius: 3px;
     border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: var(--slate);
+    color: var(--text-muted);
+    background: var(--surface);
   }
   .std-tag.active {
-    border-color: var(--amber-border);
-    color: var(--amber-light);
-    background: var(--amber-dim);
+    border-color: var(--accent-border);
+    color: var(--brand-primary);
+    background: var(--accent-dim);
+    font-weight: 600;
   }
 
   /* ── NAV TABS ── */
   .nav-tabs {
-    background: var(--slate);
+    background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 0 24px;
+    padding: 0 28px;
     display: flex;
-    gap: 0;
     overflow-x: auto;
     scrollbar-width: none;
+    position: sticky;
+    top: 52px;
+    z-index: 90;
   }
   .nav-tabs::-webkit-scrollbar { display: none; }
   .tab-btn {
-    font-family: var(--sans);
+    font-family: var(--font);
     font-size: 13px;
     font-weight: 500;
-    padding: 14px 20px;
+    padding: 13px 18px;
     background: none;
     border: none;
     color: var(--text-muted);
@@ -159,216 +182,265 @@
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
   }
-  .tab-btn:hover { color: var(--text-primary); }
+  .tab-btn:hover { color: var(--text-secondary); }
   .tab-btn.active {
-    color: var(--amber);
-    border-bottom-color: var(--amber);
-  }
-  .tab-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--amber);
-    margin-right: 7px;
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
+    color: var(--brand-primary);
+    border-bottom-color: var(--brand-primary);
+    font-weight: 600;
   }
 
-  /* ── MAIN LAYOUT ── */
+  /* ── MAIN ── */
   .main {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
-    padding: 32px 24px 80px;
+    padding: 32px 28px 80px;
   }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
   /* ── SECTION HEADERS ── */
-  .section-header {
-    margin-bottom: 24px;
-  }
+  .section-header { margin-bottom: 24px; }
   .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    color: var(--amber);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    color: var(--accent-mid);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .section-title {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--brand-primary);
   }
   .section-desc {
     font-size: 13px;
     color: var(--text-secondary);
     margin-top: 6px;
-    line-height: 1.6;
+    line-height: 1.7;
+    max-width: 620px;
   }
 
   /* ── CARDS ── */
   .card {
-    background: var(--slate);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    margin-bottom: 16px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
   }
   .card-title {
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 4px;
+    color: var(--text-primary);
+    margin-bottom: 2px;
   }
   .card-sub {
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     margin-bottom: 16px;
   }
 
-  /* ── EUC CALCULATOR ── */
-  .euc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 600px) { .euc-grid { grid-template-columns: 1fr; } }
-
-  .equipment-adder {
-    background: var(--slate-mid);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-    margin-bottom: 16px;
-  }
-  .equipment-row {
-    display: grid;
-    grid-template-columns: 1fr 80px 80px 36px;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  @media (max-width: 600px) {
-    .equipment-row { grid-template-columns: 1fr 60px 60px 32px; }
-  }
+  /* ── INPUTS ── */
   .eq-label {
     font-size: 11px;
-    font-family: var(--mono);
+    font-weight: 600;
     color: var(--text-muted);
-    margin-bottom: 4px;
-    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
-
-  select, input[type="number"], input[type="text"] {
+  select, input[type="number"] {
     width: 100%;
-    background: var(--slate-light);
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 10px;
+    border-radius: var(--radius);
+    padding: 7px 10px;
     color: var(--text-primary);
-    font-family: var(--sans);
+    font-family: var(--font);
     font-size: 13px;
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
   }
   select:focus, input:focus {
-    border-color: var(--amber);
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 2px var(--accent-dim);
   }
-  select option { background: var(--slate-light); }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239C876E'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; cursor: pointer; }
+  select option { background: white; }
 
+  /* ── BUTTONS ── */
   .btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 7px 14px;
+    border-radius: var(--radius);
     border: none;
-    font-family: var(--sans);
+    font-family: var(--font);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.15s, transform 0.1s;
+    white-space: nowrap;
   }
   .btn:active { transform: scale(0.98); }
-  .btn-amber { background: var(--amber); color: #1a1000; }
-  .btn-amber:hover { opacity: 0.9; }
+  .btn-primary {
+    background: var(--brand-primary);
+    color: var(--brand-secondary);
+  }
+  .btn-primary:hover { opacity: 0.88; }
   .btn-ghost {
-    background: var(--slate-light);
+    background: var(--surface);
     color: var(--text-secondary);
     border: 1px solid var(--border);
   }
-  .btn-ghost:hover { color: var(--text-primary); border-color: var(--text-muted); }
-  .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.2); font-size: 16px; padding: 6px 10px; }
-  .btn-danger:hover { background: rgba(239,68,68,0.2); }
+  .btn-ghost:hover { border-color: var(--border-strong); color: var(--text-primary); }
+  .btn-danger {
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid var(--red-border);
+    font-size: 15px;
+    padding: 5px 10px;
+    line-height: 1;
+  }
+  .btn-danger:hover { background: rgba(185,64,64,0.14); }
+
+  /* ── EUC CALCULATOR ── */
+  .tariff-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 500px) { .tariff-row { grid-template-columns: 1fr; } }
+
+  .tariff-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 2px;
+  }
+
+  .equipment-adder {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .equipment-row {
+    display: grid;
+    grid-template-columns: 1fr 72px 80px 34px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 560px) { .equipment-row { grid-template-columns: 1fr 56px 68px 30px; } }
 
   .result-panel {
-    background: var(--slate-mid);
-    border: 1px solid var(--amber-border);
+    background: var(--brand-primary);
     border-radius: var(--radius-lg);
-    padding: 24px;
-    margin-top: 20px;
+    padding: 22px 24px;
+    margin-top: 16px;
   }
   .result-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(235,225,210,0.6);
     text-transform: uppercase;
     margin-bottom: 4px;
   }
   .result-value {
-    font-family: var(--mono);
-    font-size: 36px;
+    font-family: var(--font-mono);
+    font-size: 38px;
     font-weight: 600;
-    color: var(--amber);
+    color: var(--brand-secondary);
     letter-spacing: -0.02em;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .result-breakdown {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(235,225,210,0.2);
     padding-top: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
   }
-  @media (max-width: 500px) { .result-breakdown { grid-template-columns: 1fr; } }
-  .rb-item { }
+  @media (max-width: 480px) { .result-breakdown { grid-template-columns: 1fr; } }
   .rb-val {
-    font-family: var(--mono);
-    font-size: 18px;
+    font-family: var(--font-mono);
+    font-size: 17px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--brand-secondary);
   }
   .rb-key {
     font-size: 11px;
-    color: var(--text-muted);
+    color: rgba(235,225,210,0.55);
     margin-top: 2px;
   }
 
-  .tariff-row {
+  .scenario-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 20px;
   }
-  @media (max-width: 500px) { .tariff-row { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .scenario-grid { grid-template-columns: 1fr; } }
 
-  /* ── CLASSES & CATEGORIES ── */
+  .scenario-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .scenario-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-primary);
+    margin-bottom: 6px;
+  }
+  .scenario-items {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .divider-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 18px;
+  }
+  .divider-label::before, .divider-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── CLASSIFICATION CARDS ── */
   .classification-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
     margin-bottom: 24px;
   }
-  @media (max-width: 600px) { .classification-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 580px) { .classification-grid { grid-template-columns: 1fr; } }
 
   .class-card {
-    background: var(--slate);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 18px;
@@ -381,70 +453,58 @@
     top: 0; left: 0; right: 0;
     height: 3px;
   }
-  .class-card.green::before { background: var(--green); }
-  .class-card.amber::before { background: var(--amber); }
-  .class-card.orange::before { background: #f97316; }
-  .class-card.red::before { background: var(--red); }
-  .class-card.cat1::before { background: var(--blue); }
-  .class-card.cat2::before { background: #a78bfa; }
-  .class-card.cat3::before { background: var(--red); }
+  .class-card.stripe-green::before   { background: var(--green); }
+  .class-card.stripe-amber::before   { background: var(--accent-light); }
+  .class-card.stripe-orange::before  { background: var(--orange); }
+  .class-card.stripe-red::before     { background: var(--red); }
+  .class-card.stripe-blue::before    { background: var(--blue); }
+  .class-card.stripe-purple::before  { background: var(--purple); }
+  .class-card.span2 { grid-column: span 2; }
+  @media (max-width: 580px) { .class-card.span2 { grid-column: span 1; } }
 
   .class-number {
-    font-family: var(--mono);
-    font-size: 11px;
+    font-family: var(--font-mono);
+    font-size: 10px;
     letter-spacing: 0.1em;
     color: var(--text-muted);
     margin-bottom: 4px;
+    text-transform: uppercase;
   }
   .class-name {
     font-size: 15px;
     font-weight: 700;
+    color: var(--brand-primary);
     margin-bottom: 8px;
   }
   .class-desc {
     font-size: 12px;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 10px;
+    line-height: 1.65;
+    margin-bottom: 12px;
   }
-  .class-indicators {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  .class-indicators { display: flex; flex-wrap: wrap; gap: 5px; }
+  .class-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 10px;
   }
+
   .indicator-tag {
     font-size: 11px;
     padding: 2px 8px;
-    border-radius: 4px;
-    font-family: var(--mono);
+    border-radius: 3px;
+    font-weight: 500;
   }
-  .indicator-tag.green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
-  .indicator-tag.amber { background: var(--amber-dim); color: var(--amber); border: 1px solid var(--amber-border); }
-  .indicator-tag.red { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
-  .indicator-tag.blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
-  .indicator-tag.purple { background: rgba(167,139,250,0.1); color: #a78bfa; border: 1px solid rgba(167,139,250,0.2); }
+  .tag-green  { background: var(--green-dim);  color: var(--green);  border: 1px solid var(--green-border); }
+  .tag-amber  { background: var(--accent-dim); color: var(--accent-mid); border: 1px solid var(--accent-border); }
+  .tag-red    { background: var(--red-dim);   color: var(--red);    border: 1px solid var(--red-border); }
+  .tag-blue   { background: var(--blue-dim);  color: var(--blue);   border: 1px solid var(--blue-border); }
+  .tag-purple { background: var(--purple-dim);color: var(--purple); border: 1px solid var(--purple-border); }
 
-  .divider-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 28px 0 20px;
-  }
-  .divider-label::before, .divider-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── EQUIPMENT REFERENCE ── */
+  /* ── EQUIPMENT ACCORDION ── */
   .eq-accordion-item {
-    background: var(--slate);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     margin-bottom: 8px;
@@ -454,33 +514,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 14px 18px;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.12s;
     user-select: none;
   }
-  .eq-accordion-header:hover { background: var(--slate-mid); }
+  .eq-accordion-header:hover { background: var(--surface-sunken); }
   .eq-accordion-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
   }
   .eq-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: var(--amber-dim);
-    border: 1px solid var(--amber-border);
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 17px;
     flex-shrink: 0;
   }
-  .eq-name { font-size: 14px; font-weight: 600; }
-  .eq-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .eq-name { font-size: 14px; font-weight: 600; color: var(--brand-primary); }
+  .eq-sub  { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
   .eq-chevron {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     transition: transform 0.2s;
     flex-shrink: 0;
@@ -488,7 +548,7 @@
   .eq-accordion-item.open .eq-chevron { transform: rotate(180deg); }
   .eq-accordion-body {
     display: none;
-    padding: 0 20px 20px;
+    padding: 0 18px 18px;
     border-top: 1px solid var(--border);
   }
   .eq-accordion-item.open .eq-accordion-body { display: block; }
@@ -496,124 +556,68 @@
   .eq-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 16px 0 14px;
+    margin: 14px 0 12px;
     font-size: 12px;
   }
   .eq-table th {
     text-align: left;
-    font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text-muted);
     padding: 6px 10px;
     border-bottom: 1px solid var(--border);
-    font-weight: 500;
   }
   .eq-table td {
     padding: 8px 10px;
-    border-bottom: 1px solid rgba(63,69,83,0.4);
+    border-bottom: 1px solid rgba(212,201,184,0.4);
     color: var(--text-secondary);
     vertical-align: top;
   }
   .eq-table td:first-child { color: var(--text-primary); font-weight: 500; }
   .eq-table tr:last-child td { border-bottom: none; }
-  .watt-val { font-family: var(--mono); color: var(--amber-light) !important; }
+  .watt-val { font-family: var(--font-mono); color: var(--brand-primary) !important; font-weight: 600 !important; }
 
-  .use-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .eq-note {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    background: var(--surface-sunken);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+
+  .use-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
   .use-tag {
     font-size: 11px;
     padding: 2px 8px;
-    border-radius: 4px;
-    background: var(--slate-mid);
+    border-radius: 3px;
+    background: var(--surface-raised);
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    font-family: var(--mono);
+    font-weight: 500;
+  }
+  .eq-ref {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
   }
 
   /* ── CHECKLIST ── */
-  .checklist-phase {
-    margin-bottom: 24px;
-  }
-  .phase-header {
+  .checklist-actions {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
   }
-  .phase-number {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--amber-dim);
-    border: 1px solid var(--amber-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--amber);
-    flex-shrink: 0;
-  }
-  .phase-name { font-size: 14px; font-weight: 600; }
-  .phase-progress {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-left: auto;
-  }
-
-  .checklist-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    cursor: pointer;
-    transition: background 0.12s;
-  }
-  .checklist-item:hover { background: var(--slate-mid); }
-  .check-box {
-    width: 18px;
-    height: 18px;
-    border: 1.5px solid var(--border);
-    border-radius: 4px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .checklist-item.checked .check-box {
-    background: var(--green);
-    border-color: var(--green);
-  }
-  .checklist-item.checked .check-box::after {
-    content: '✓';
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .check-text { font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
-  .checklist-item.checked .check-text {
-    color: var(--text-muted);
-    text-decoration: line-through;
-    text-decoration-color: var(--text-muted);
-  }
-  .check-ref {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
   .progress-bar-wrap {
-    background: var(--slate-mid);
+    background: var(--border);
     border-radius: 4px;
     height: 4px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     overflow: hidden;
   }
   .progress-bar-fill {
@@ -623,89 +627,120 @@
     transition: width 0.3s ease;
   }
 
-  .checklist-actions {
+  .checklist-phase { margin-bottom: 24px; }
+  .phase-header {
     display: flex;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
   }
-
-  /* ── FOOTER DISCLAIMER ── */
-  .footer-note {
-    background: var(--slate-mid);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 18px;
-    margin-top: 32px;
+  .phase-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    color: var(--brand-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .phase-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-primary);
+    flex: 1;
+  }
+  .phase-progress {
+    font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-muted);
-    line-height: 1.7;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .checklist-item:hover { background: var(--surface-sunken); }
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    background: var(--surface);
+  }
+  .checklist-item.checked .check-box {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .checklist-item.checked .check-box::after {
+    content: '✓';
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .check-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .checklist-item.checked .check-text {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--border-strong);
+  }
+  .check-ref {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 13px 16px;
+    margin-top: 28px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.75;
   }
   .footer-note strong { color: var(--text-secondary); }
 
+  /* ── WARNING CARD ── */
+  .warning-card {
+    background: rgba(196,106,40,0.06);
+    border: 1px solid rgba(196,106,40,0.25);
+    border-radius: var(--radius-lg);
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .warning-icon { font-size: 22px; flex-shrink: 0; }
+  .warning-title { font-size: 13px; font-weight: 600; color: var(--orange); margin-bottom: 5px; }
+  .warning-body { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  .warning-ref { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-top: 8px; }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--charcoal); }
-  ::-webkit-scrollbar-thumb { background: var(--slate-light); border-radius: 3px; }
-
-  /* ── REFERENCE TABLE ── */
-  .ref-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-  .ref-table thead tr {
-    background: var(--slate-mid);
-  }
-  .ref-table th {
-    text-align: left;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    padding: 10px 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--border);
-  }
-  .ref-table td {
-    padding: 11px 14px;
-    border-bottom: 1px solid rgba(63,69,83,0.5);
-    color: var(--text-secondary);
-    vertical-align: top;
-  }
-  .ref-table tr:last-child td { border-bottom: none; }
-  .ref-table td.primary { color: var(--text-primary); font-weight: 500; }
-  .ref-table td.mono { font-family: var(--mono); color: var(--amber-light); }
-
-  .scenario-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 600px) { .scenario-grid { grid-template-columns: 1fr; } }
-
-  .scenario-card {
-    background: var(--slate-mid);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-  }
-  .scenario-name {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--text-primary);
-  }
-  .scenario-items {
-    font-size: 11px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    font-family: var(--mono);
-  }
-
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -713,7 +748,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-brand">
-    <span class="brand-badge">SHEBUILD</span>
+    <span class="brand-badge">SheBuild</span>
     <span class="brand-name">Restoration Field Guide</span>
   </div>
   <div class="topbar-meta">
@@ -724,8 +759,8 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">▸ Interactive Training Resource</div>
-  <h1>The Restorer's<br><span>Field Reference</span></h1>
+  <div class="hero-eyebrow">Interactive Training Resource</div>
+  <h1>The Restorer's Field Reference</h1>
   <p class="hero-sub">Live calculators, classification references, and field checklists for water damage restoration professionals operating under Australian and IICRC standards.</p>
   <div class="standards-bar">
     <span class="std-tag active">IICRC S500 4th Ed</span>
@@ -733,22 +768,22 @@
     <span class="std-tag">AS/NZS ISO 31000</span>
     <span class="std-tag">Safe Work Australia</span>
     <span class="std-tag">AIRAH DA19</span>
-    <span class="std-tag active">EUC Calc</span>
+    <span class="std-tag active">EUC Calculator</span>
   </div>
 </div>
 
 <!-- NAV TABS -->
 <div class="nav-tabs">
-  <button class="tab-btn active" onclick="showTab('euc', this)"><span class="tab-dot"></span>EUC Calculator</button>
+  <button class="tab-btn active" onclick="showTab('euc', this)">EUC Calculator</button>
   <button class="tab-btn" onclick="showTab('classes', this)">Classifications</button>
   <button class="tab-btn" onclick="showTab('equipment', this)">Equipment Reference</button>
   <button class="tab-btn" onclick="showTab('checklist', this)">Field Checklist</button>
 </div>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <div class="main">
 
-  <!-- ── TAB: EUC CALCULATOR ── -->
+  <!-- ── EUC CALCULATOR ── -->
   <div class="tab-panel active" id="tab-euc">
     <div class="section-header">
       <div class="section-label">EUC Calculator</div>
@@ -757,7 +792,7 @@
     </div>
 
     <div class="card">
-      <div class="card-title">Tariff & Duration Settings</div>
+      <div class="card-title">Tariff & Duration</div>
       <div class="card-sub">Set the electricity rate and total program duration first</div>
       <div class="tariff-row">
         <div>
@@ -769,41 +804,37 @@
           <input type="number" id="hours" value="72" min="1" max="720" oninput="calculate()">
         </div>
       </div>
-      <div style="font-size:11px; color: var(--text-muted); font-family: var(--mono);">
-        Avg QLD residential tariff ~$0.31–0.38/kWh · Typical drying program 48–120 hrs
-      </div>
+      <div class="tariff-hint">Avg QLD residential tariff ~$0.31–0.38/kWh · Typical drying program 48–120 hrs</div>
     </div>
 
     <div class="card">
       <div class="card-title">Equipment Deployed</div>
       <div class="card-sub">Add each piece of equipment and quantity on site</div>
-
       <div class="equipment-adder">
-        <div class="equipment-row" style="margin-bottom:10px;">
+        <div class="equipment-row" style="margin-bottom:8px;">
           <div class="eq-label">Equipment Type</div>
           <div class="eq-label">Qty</div>
           <div class="eq-label">Watts</div>
           <div></div>
         </div>
         <div id="equipment-list"></div>
-        <button class="btn btn-ghost" onclick="addEquipmentRow()" style="margin-top:8px; font-size:12px;">+ Add Equipment</button>
+        <button class="btn btn-ghost" onclick="addEquipmentRow()" style="margin-top:6px; font-size:12px;">+ Add Equipment</button>
       </div>
-
-      <div class="result-panel" id="result-panel">
+      <div class="result-panel">
         <div class="result-label">Estimated EUC</div>
         <div class="result-value" id="euc-total">$0.00</div>
         <div class="result-breakdown">
-          <div class="rb-item">
-            <div class="rb-val" id="total-kw">0.00 kW</div>
+          <div>
+            <div class="rb-val" id="total-kw">0.000 kW</div>
             <div class="rb-key">Total Load</div>
           </div>
-          <div class="rb-item">
-            <div class="rb-val" id="total-kwh">0 kWh</div>
+          <div>
+            <div class="rb-val" id="total-kwh">0.0 kWh</div>
             <div class="rb-key">Total kWh</div>
           </div>
-          <div class="rb-item">
+          <div>
             <div class="rb-val" id="daily-cost">$0.00/day</div>
-            <div class="rb-key">Daily Est. Cost</div>
+            <div class="rb-key">Daily Estimate</div>
           </div>
         </div>
       </div>
@@ -814,31 +845,31 @@
       <div class="scenario-card">
         <div class="scenario-name">Small Bathroom</div>
         <div class="scenario-items">2× Low Profile Air Mover<br>1× Standard LGR Dehumidifier</div>
-        <button class="btn btn-ghost" style="margin-top:10px; font-size:11px; padding: 5px 12px;" onclick="loadScenario('bathroom')">Load Scenario</button>
+        <button class="btn btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="loadScenario('bathroom')">Load Scenario</button>
       </div>
       <div class="scenario-card">
         <div class="scenario-name">Bedroom</div>
         <div class="scenario-items">3× Axial Air Mover<br>1× Standard LGR Dehumidifier</div>
-        <button class="btn btn-ghost" style="margin-top:10px; font-size:11px; padding: 5px 12px;" onclick="loadScenario('bedroom')">Load Scenario</button>
+        <button class="btn btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="loadScenario('bedroom')">Load Scenario</button>
       </div>
       <div class="scenario-card">
         <div class="scenario-name">Lounge Room</div>
         <div class="scenario-items">5× Centrifugal Air Mover<br>2× Standard LGR Dehumidifier</div>
-        <button class="btn btn-ghost" style="margin-top:10px; font-size:11px; padding: 5px 12px;" onclick="loadScenario('lounge')">Load Scenario</button>
+        <button class="btn btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="loadScenario('lounge')">Load Scenario</button>
       </div>
       <div class="scenario-card">
         <div class="scenario-name">Mould Remediation</div>
         <div class="scenario-items">3× Centrifugal Air Mover<br>1× HEPA Air Scrubber<br>1× Negative Air Machine<br>1× LGR Dehumidifier</div>
-        <button class="btn btn-ghost" style="margin-top:10px; font-size:11px; padding: 5px 12px;" onclick="loadScenario('mould')">Load Scenario</button>
+        <button class="btn btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="loadScenario('mould')">Load Scenario</button>
       </div>
     </div>
 
     <div class="footer-note">
-      <strong>Important:</strong> EUC calculations are estimates based on typical equipment wattages. Actual consumption varies by manufacturer, model, loading conditions, and environmental factors. Always refer to equipment nameplates and actual metered readings where possible. Calculations should be documented and submitted in accordance with the relevant insurer's EUC claims process. Aligned with IICRC S500 4th Edition and ANSI standards for professional water damage restoration.
+      <strong>Important:</strong> EUC calculations are estimates based on typical equipment wattages. Actual consumption varies by manufacturer, model, operating conditions, ambient temperature, humidity, and loading. Always refer to equipment nameplates and actual metered readings where possible. Calculations should be documented and submitted in accordance with the relevant insurer's EUC claims process. Aligned with IICRC S500 4th Edition and ANSI standards for professional water damage restoration.
     </div>
   </div>
 
-  <!-- ── TAB: CLASSIFICATIONS ── -->
+  <!-- ── CLASSIFICATIONS ── -->
   <div class="tab-panel" id="tab-classes">
     <div class="section-header">
       <div class="section-label">IICRC S500 4th Edition</div>
@@ -847,121 +878,112 @@
     </div>
 
     <div class="divider-label">Drying Class — Moisture Load</div>
-
     <div class="classification-grid">
-      <div class="class-card green">
-        <div class="class-number">CLASS 01</div>
+      <div class="class-card stripe-green">
+        <div class="class-number">Class 01</div>
         <div class="class-name">Minimal Moisture</div>
         <div class="class-desc">Least amount of water absorbed by materials. Only a portion of the room is wet. Materials have a low permeance/porosity.</div>
         <div class="class-indicators">
-          <span class="indicator-tag green">Low evaporation</span>
-          <span class="indicator-tag green">Minimal material</span>
+          <span class="indicator-tag tag-green">Low evaporation</span>
+          <span class="indicator-tag tag-green">Minimal material</span>
         </div>
-        <div style="margin-top:12px; font-size:11px; color: var(--text-muted); font-family: var(--mono);">Typical: 1–2 air movers per affected area</div>
+        <div class="class-hint">Typical: 1–2 air movers per affected area</div>
       </div>
-      <div class="class-card amber">
-        <div class="class-number">CLASS 02</div>
+      <div class="class-card stripe-amber">
+        <div class="class-number">Class 02</div>
         <div class="class-name">Significant Moisture</div>
-        <div class="class-desc">Large amount of water. Entire room carpet and cushion may be saturated. Water has wicked up walls less than 60cm (24 in).</div>
+        <div class="class-desc">Large amount of water. Entire room carpet and cushion may be saturated. Water has wicked up walls less than 60cm.</div>
         <div class="class-indicators">
-          <span class="indicator-tag amber">Full carpet/pad</span>
-          <span class="indicator-tag amber">Wall wicking &lt;60cm</span>
+          <span class="indicator-tag tag-amber">Full carpet/pad</span>
+          <span class="indicator-tag tag-amber">Wall wicking &lt;60cm</span>
         </div>
-        <div style="margin-top:12px; font-size:11px; color: var(--text-muted); font-family: var(--mono);">Typical: 1 air mover per 15–20m²</div>
+        <div class="class-hint">Typical: 1 air mover per 15–20m²</div>
       </div>
-      <div class="class-card orange">
-        <div class="class-number">CLASS 03</div>
+      <div class="class-card stripe-orange">
+        <div class="class-number">Class 03</div>
         <div class="class-name">Greatest Moisture</div>
         <div class="class-desc">Greatest amount of water. Water may have come from overhead. Walls, ceilings, insulation and sub-floor materials are saturated.</div>
         <div class="class-indicators">
-          <span class="indicator-tag amber">Ceiling wet</span>
-          <span class="indicator-tag red">Insulation/subfloor</span>
-          <span class="indicator-tag amber">Overhead source</span>
+          <span class="indicator-tag tag-amber">Ceiling wet</span>
+          <span class="indicator-tag tag-red">Insulation/subfloor</span>
+          <span class="indicator-tag tag-amber">Overhead source</span>
         </div>
-        <div style="margin-top:12px; font-size:11px; color: var(--text-muted); font-family: var(--mono);">High equipment density required</div>
+        <div class="class-hint">High equipment density required</div>
       </div>
-      <div class="class-card red">
-        <div class="class-number">CLASS 04</div>
+      <div class="class-card stripe-red">
+        <div class="class-number">Class 04</div>
         <div class="class-name">Specialty Drying</div>
-        <div class="class-desc">Involves materials with very low permeance/porosity — hardwood, concrete, plaster, brick. Requires longer drying times and specialised equipment.</div>
+        <div class="class-desc">Materials with very low permeance/porosity — hardwood, concrete, plaster, brick. Requires longer drying times and specialised equipment.</div>
         <div class="class-indicators">
-          <span class="indicator-tag red">Hardwood floors</span>
-          <span class="indicator-tag red">Concrete/masonry</span>
-          <span class="indicator-tag amber">Desiccant required</span>
+          <span class="indicator-tag tag-red">Hardwood floors</span>
+          <span class="indicator-tag tag-red">Concrete/masonry</span>
+          <span class="indicator-tag tag-amber">Desiccant required</span>
         </div>
-        <div style="margin-top:12px; font-size:11px; color: var(--text-muted); font-family: var(--mono);">Injectidry + desiccant typical</div>
+        <div class="class-hint">Injectidry + desiccant typical</div>
       </div>
     </div>
 
     <div class="divider-label">Water Category — Contamination Level</div>
-
     <div class="classification-grid">
-      <div class="class-card cat1">
-        <div class="class-number">CATEGORY 01</div>
+      <div class="class-card stripe-blue">
+        <div class="class-number">Category 01</div>
         <div class="class-name">Clean Water</div>
-        <div class="class-desc">Originates from a sanitary source. Poses no substantial risk from dermal, ingestion, or inhalation exposure. Source examples: broken water supply lines, tub/sink overflow.</div>
+        <div class="class-desc">Originates from a sanitary source. Poses no substantial risk from dermal, ingestion, or inhalation exposure.</div>
         <div class="class-indicators">
-          <span class="indicator-tag blue">Supply line break</span>
-          <span class="indicator-tag blue">Appliance overflow</span>
-          <span class="indicator-tag blue">Melting ice/snow</span>
+          <span class="indicator-tag tag-blue">Supply line break</span>
+          <span class="indicator-tag tag-blue">Appliance overflow</span>
+          <span class="indicator-tag tag-blue">Melting ice/snow</span>
         </div>
       </div>
-      <div class="class-card cat2">
-        <div class="class-number">CATEGORY 02</div>
+      <div class="class-card stripe-purple">
+        <div class="class-number">Category 02</div>
         <div class="class-name">Grey Water</div>
-        <div class="class-desc">Contains significant contamination and has potential to cause discomfort or sickness if ingested. Includes discharge from dishwashers, washing machines, and toilet bowl overflow (no faeces).</div>
+        <div class="class-desc">Contains significant contamination with potential to cause discomfort or sickness if ingested. Includes discharge from dishwashers, washing machines, and toilet bowl overflow (no faeces).</div>
         <div class="class-indicators">
-          <span class="indicator-tag purple">Washing machine</span>
-          <span class="indicator-tag purple">Toilet bowl (urine only)</span>
-          <span class="indicator-tag amber">PPE required</span>
+          <span class="indicator-tag tag-purple">Washing machine</span>
+          <span class="indicator-tag tag-purple">Toilet bowl (urine only)</span>
+          <span class="indicator-tag tag-amber">PPE required</span>
         </div>
       </div>
-      <div class="class-card cat3" style="grid-column: span 2;">
-        <div class="class-number">CATEGORY 03</div>
+      <div class="class-card stripe-red span2">
+        <div class="class-number">Category 03</div>
         <div class="class-name">Black Water</div>
         <div class="class-desc">Grossly contaminated. Contains pathogenic, toxigenic, or other harmful agents. Causes significant adverse reactions. Includes sewage, flooding from seawater, rising water from rivers/streams, wind-driven rain, and Category 1 or 2 water that has degraded over time.</div>
         <div class="class-indicators">
-          <span class="indicator-tag red">Sewage</span>
-          <span class="indicator-tag red">Flood water</span>
-          <span class="indicator-tag red">Full PPE mandatory</span>
-          <span class="indicator-tag red">Category 3 protocols</span>
-          <span class="indicator-tag amber">Contents disposal likely</span>
+          <span class="indicator-tag tag-red">Sewage</span>
+          <span class="indicator-tag tag-red">Flood water</span>
+          <span class="indicator-tag tag-red">Full PPE mandatory</span>
+          <span class="indicator-tag tag-red">Category 3 protocols</span>
+          <span class="indicator-tag tag-amber">Contents disposal likely</span>
         </div>
       </div>
     </div>
 
-    <div class="divider-label">Category Escalation — Important Note</div>
-    <div class="card" style="border-color: rgba(245,158,11,0.3);">
-      <div style="display:flex; gap:14px; align-items:flex-start;">
-        <div style="font-size:24px; flex-shrink:0;">⚠️</div>
-        <div>
-          <div class="card-title" style="color: var(--amber);">Category Can Escalate</div>
-          <div style="font-size:13px; color: var(--text-secondary); line-height:1.7;">
-            Category 1 water left untreated can escalate to Category 2 within 24–48 hours due to microbial growth. Category 2 water can escalate to Category 3 if left untreated. Time of assessment is critical for accurate categorisation and scope documentation.
-            <br><br>
-            <span style="font-family: var(--mono); font-size:11px; color: var(--text-muted);">Ref: IICRC S500 4th Ed. Section 7 — Water Categories</span>
-          </div>
-        </div>
+    <div class="divider-label">Important Note</div>
+    <div class="warning-card">
+      <div class="warning-icon">⚠️</div>
+      <div>
+        <div class="warning-title">Category Can Escalate</div>
+        <div class="warning-body">Category 1 water left untreated can escalate to Category 2 within 24–48 hours due to microbial growth. Category 2 can escalate to Category 3 if left untreated. Time of assessment is critical for accurate categorisation and scope documentation.</div>
+        <div class="warning-ref">Ref: IICRC S500 4th Ed. Section 7 — Water Categories</div>
       </div>
     </div>
 
     <div class="footer-note">
-      <strong>Classification reference only.</strong> Drying class and water category must be determined by a qualified water damage restoration professional using appropriate moisture detection equipment and psychrometric evaluation on site. This guide references the IICRC S500 Standard for Professional Water Damage Restoration, 4th Edition.
+      <strong>Classification reference only.</strong> Drying class and water category must be determined by a qualified restoration professional using appropriate moisture detection equipment and psychrometric evaluation on site. This guide references the IICRC S500 Standard for Professional Water Damage Restoration, 4th Edition.
     </div>
   </div>
 
-  <!-- ── TAB: EQUIPMENT REFERENCE ── -->
+  <!-- ── EQUIPMENT REFERENCE ── -->
   <div class="tab-panel" id="tab-equipment">
     <div class="section-header">
       <div class="section-label">Equipment Reference</div>
       <div class="section-title">Restoration Equipment Guide</div>
       <div class="section-desc">Typical wattage ranges, current draw, and application notes for common structural drying equipment. Values are typical — always check equipment nameplates for actual specifications.</div>
     </div>
-
     <div id="equipment-accordion"></div>
 
-    <div class="divider-label">Typical Equipment Combinations by Scenario</div>
-
+    <div class="divider-label">Typical Equipment Combinations</div>
     <div class="scenario-grid">
       <div class="scenario-card">
         <div class="scenario-name">Small Bathroom</div>
@@ -990,29 +1012,25 @@
     </div>
 
     <div class="footer-note">
-      <strong>Wattage note:</strong> All values are typical industry ranges. Actual consumption depends on manufacturer, model, operating conditions, ambient temperature, humidity, and loading. Reference equipment datasheets and nameplates for accurate specifications. Operating hours assume continuous 24hr operation for drying equipment unless otherwise noted.
+      <strong>Wattage note:</strong> All values are typical industry ranges. Actual consumption depends on manufacturer, model, operating conditions, ambient temperature, humidity, and loading. Reference equipment datasheets and nameplates for accurate specifications.
     </div>
   </div>
 
-  <!-- ── TAB: FIELD CHECKLIST ── -->
+  <!-- ── FIELD CHECKLIST ── -->
   <div class="tab-panel" id="tab-checklist">
     <div class="section-header">
       <div class="section-label">Field Checklist</div>
       <div class="section-title">Water Loss — First Response</div>
       <div class="section-desc">Structured job commencement checklist for water damage first response. Aligned with IICRC S500 documentation requirements and Australian insurance repair industry expectations.</div>
     </div>
-
     <div class="checklist-actions">
-      <button class="btn btn-amber" onclick="resetChecklist()">Reset Checklist</button>
+      <button class="btn btn-primary" onclick="resetChecklist()">Reset Checklist</button>
       <button class="btn btn-ghost" onclick="selectAll()">Mark All Complete</button>
     </div>
-
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
     </div>
-
     <div id="checklist-container"></div>
-
     <div class="footer-note">
       <strong>Documentation reminder:</strong> All checklist items should be supported by site photography, moisture readings, and written records retained in the job file. Documentation requirements vary by insurer — confirm with the relevant loss adjuster or insurer contact before finalising scope. This checklist aligns with IICRC S500 first response requirements and general Australian insurance repair industry expectations.
     </div>
@@ -1024,112 +1042,93 @@
 // ─────────────────────────────────────────────
 // DATA
 // ─────────────────────────────────────────────
-
 const EQUIPMENT_TYPES = [
-  { label: "Low Profile Air Mover",    watts: 340,  group: "Air Movers" },
-  { label: "Axial Air Mover",          watts: 600,  group: "Air Movers" },
-  { label: "Centrifugal Air Mover",    watts: 780,  group: "Air Movers" },
-  { label: "Small LGR Dehumidifier",   watts: 650,  group: "Dehumidifiers" },
-  { label: "Standard LGR Dehumidifier",watts: 800,  group: "Dehumidifiers" },
-  { label: "Large LGR Dehumidifier",   watts: 1000, group: "Dehumidifiers" },
+  { label: "Low Profile Air Mover",        watts: 340,  group: "Air Movers" },
+  { label: "Axial Air Mover",              watts: 600,  group: "Air Movers" },
+  { label: "Centrifugal Air Mover",        watts: 780,  group: "Air Movers" },
+  { label: "Small LGR Dehumidifier",       watts: 650,  group: "Dehumidifiers" },
+  { label: "Standard LGR Dehumidifier",    watts: 800,  group: "Dehumidifiers" },
+  { label: "Large LGR Dehumidifier",       watts: 1000, group: "Dehumidifiers" },
   { label: "Small Desiccant Dehumidifier", watts: 1500, group: "Dehumidifiers" },
   { label: "Large Desiccant Dehumidifier", watts: 2750, group: "Dehumidifiers" },
-  { label: "HEPA Air Scrubber",        watts: 475,  group: "Air Quality" },
-  { label: "Negative Air Machine",     watts: 700,  group: "Air Quality" },
-  { label: "Injectidry Unit",          watts: 650,  group: "Specialist" },
-  { label: "Floor Drying System",      watts: 900,  group: "Specialist" },
-  { label: "Portable Heater",          watts: 1700, group: "Specialist" },
+  { label: "HEPA Air Scrubber",            watts: 475,  group: "Air Quality" },
+  { label: "Negative Air Machine",         watts: 700,  group: "Air Quality" },
+  { label: "Injectidry Unit",              watts: 650,  group: "Specialist" },
+  { label: "Floor Drying System",          watts: 900,  group: "Specialist" },
+  { label: "Portable Heater",              watts: 1700, group: "Specialist" },
 ];
 
-const EQUIPMENT_ACCORDION_DATA = [
+const ACCORDION_DATA = [
   {
-    icon: "💨",
-    name: "Air Movers",
-    sub: "Axial & Centrifugal — structural drying workhorses",
+    icon: "💨", name: "Air Movers", sub: "Axial & Centrifugal — structural drying workhorses",
+    cols: ["Type", "Current Draw", "Wattage", "Typical Operation"],
     rows: [
       ["Low Profile Air Mover", "1.0–1.8 A", "240–430 W", "24 hrs/day"],
-      ["Axial Air Mover", "2–3 A", "480–720 W", "24 hrs/day"],
-      ["Centrifugal Air Mover", "2.5–4 A", "600–960 W", "24 hrs/day"],
+      ["Axial Air Mover",       "2–3 A",     "480–720 W", "24 hrs/day"],
+      ["Centrifugal Air Mover", "2.5–4 A",   "600–960 W", "24 hrs/day"],
     ],
-    cols: ["Type", "Current Draw", "Wattage", "Typical Operation"],
     note: "Air movers accelerate evaporation from wet surfaces. They do not extract moisture — they must be paired with dehumidification. Position to create circular or vortex airflow patterns across wet materials.",
     uses: ["Carpet", "Timber flooring", "Wall cavities", "Skirting boards", "Cabinetry", "Structural drying"],
     ref: "IICRC S500 §8 — Structural Drying Principles"
   },
   {
-    icon: "❄️",
-    name: "LGR Dehumidifiers",
-    sub: "Low Grain Refrigerant — standard structural drying",
-    rows: [
-      ["Small LGR", "—", "600–700 W", "24 hrs/day"],
-      ["Standard LGR", "—", "700–900 W", "24 hrs/day"],
-      ["Large LGR", "—", "900–1,100 W", "24 hrs/day"],
-    ],
+    icon: "❄️", name: "LGR Dehumidifiers", sub: "Low Grain Refrigerant — standard structural drying",
     cols: ["Type", "Current", "Wattage", "Operation"],
+    rows: [
+      ["Small LGR",    "—", "600–700 W",   "24 hrs/day"],
+      ["Standard LGR", "—", "700–900 W",   "24 hrs/day"],
+      ["Large LGR",    "—", "900–1,100 W", "24 hrs/day"],
+    ],
     note: "LGR dehumidifiers remove water vapour from the air, allowing wet materials to continue releasing moisture efficiently. LGR technology achieves lower grain residuals than conventional refrigerant units — essential for efficient structural drying.",
     uses: ["Cat 1–3 water losses", "Residential drying", "Commercial drying", "All drying classes"],
     ref: "IICRC S500 §8.3 — Dehumidification"
   },
   {
-    icon: "🌡️",
-    name: "Desiccant Dehumidifiers",
-    sub: "Low-temp & dense material drying specialist",
+    icon: "🌡️", name: "Desiccant Dehumidifiers", sub: "Low-temp & dense material drying specialist",
+    cols: ["Type", "Current", "Wattage", "Operation"],
     rows: [
       ["Small Desiccant", "—", "1,200–1,800 W", "24 hrs/day"],
       ["Large Desiccant", "—", "2,000–3,500 W", "24 hrs/day"],
     ],
-    cols: ["Type", "Current", "Wattage", "Operation"],
-    note: "Desiccant units operate effectively at lower temperatures where refrigerant dehumidifiers lose efficiency. Essential for Class 4 drying (hardwood, concrete), cold environments, and large commercial losses. Higher power consumption — factor accurately into EUC calculations.",
+    note: "Desiccant units operate effectively at lower temperatures where refrigerant dehumidifiers lose efficiency. Essential for Class 4 drying, cold environments, and large commercial losses. Higher power consumption — factor accurately into EUC calculations.",
     uses: ["Class 4 drying", "Cold environments", "Hardwood floors", "Concrete/masonry", "Large commercial"],
     ref: "IICRC S500 §8.4 — Desiccant Dehumidification"
   },
   {
-    icon: "🌬️",
-    name: "HEPA Air Scrubbers",
-    sub: "Airborne particle filtration — mould & fire",
-    rows: [
-      ["HEPA Air Scrubber (standard)", "—", "250–700 W", "24 hrs/day"],
-    ],
+    icon: "🌬️", name: "HEPA Air Scrubbers", sub: "Airborne particle filtration — mould & fire",
     cols: ["Type", "Current", "Wattage", "Operation"],
-    note: "HEPA filtration captures particles down to 0.3 microns at 99.97% efficiency. Used where airborne contamination is a concern. In mould remediation, confirm air scrubbers are operating before disturbing affected materials.",
+    rows: [["HEPA Air Scrubber", "—", "250–700 W", "24 hrs/day"]],
+    note: "HEPA filtration captures particles down to 0.3 microns at 99.97% efficiency. In mould remediation, confirm air scrubbers are operating before disturbing affected materials.",
     uses: ["Water damage", "Mould remediation", "Fire & smoke", "Asbestos adjacent works"],
     ref: "IICRC S520 §6 — Remediation Work Area Controls"
   },
   {
-    icon: "↙️",
-    name: "Negative Air Machines",
-    sub: "Containment pressure control",
-    rows: [
-      ["Negative Air Machine", "—", "500–900 W", "As required"],
-    ],
+    icon: "↙️", name: "Negative Air Machines", sub: "Containment pressure control",
     cols: ["Type", "Current", "Wattage", "Operation"],
+    rows: [["Negative Air Machine", "—", "500–900 W", "As required"]],
     note: "Creates negative air pressure within a work area to prevent cross-contamination of unaffected spaces. Exhausted air should be HEPA filtered before discharge. Required for mould, asbestos, and Category 3 containment scenarios.",
     uses: ["Mould remediation", "Asbestos control", "Fire restoration", "Cat 3 containment"],
     ref: "IICRC S520 §6.3 — Negative Pressure Containment"
   },
   {
-    icon: "🔧",
-    name: "Injectidry & Floor Systems",
-    sub: "Cavity drying & sub-floor systems",
-    rows: [
-      ["Injectidry Unit", "—", "400–900 W", "24 hrs/day"],
-      ["Floor Drying System (mats)", "—", "600–1,200 W", "24 hrs/day"],
-    ],
+    icon: "🔧", name: "Injectidry & Floor Systems", sub: "Cavity drying & sub-floor systems",
     cols: ["Type", "Current", "Wattage", "Operation"],
-    note: "Injectidry systems force conditioned air into closed cavities via small drilled penetrations — used where conventional airflow cannot reach. Vacuum floor mat systems extract moisture trapped beneath non-porous floor coverings. Both are Class 4 drying essentials.",
+    rows: [
+      ["Injectidry Unit",          "—", "400–900 W",   "24 hrs/day"],
+      ["Floor Drying System (mats)","—", "600–1,200 W", "24 hrs/day"],
+    ],
+    note: "Injectidry systems force conditioned air into closed cavities via small drilled penetrations. Vacuum floor mat systems extract moisture trapped beneath non-porous floor coverings. Both are Class 4 drying essentials.",
     uses: ["Hardwood flooring", "Wall cavities", "Ceiling cavities", "Vinyl/floating floors", "Sub-floor"],
     ref: "IICRC S500 §8.6 — Specialty Drying Systems"
   },
   {
-    icon: "🔌",
-    name: "HEPA Vacuums & Heaters",
-    sub: "Support equipment — intermittent use",
-    rows: [
-      ["HEPA Vacuum", "—", "900–1,400 W", "Intermittent"],
-      ["Portable Heater", "—", "1,000–2,400 W", "As required"],
-    ],
+    icon: "🔌", name: "HEPA Vacuums & Heaters", sub: "Support equipment — intermittent use",
     cols: ["Type", "Current", "Wattage", "Operation"],
-    note: "HEPA vacuums are used for detailed cleaning only — not left running continuously. Portable heaters may be introduced where ambient temperature is impeding evaporation, but must be monitored and used in accordance with restoration principles. Not always appropriate — consult drying plan.",
+    rows: [
+      ["HEPA Vacuum",    "—", "900–1,400 W",   "Intermittent"],
+      ["Portable Heater","—", "1,000–2,400 W", "As required"],
+    ],
+    note: "HEPA vacuums are used for detailed cleaning only — not left running continuously. Portable heaters may be introduced where ambient temperature is impeding evaporation, but must be monitored and used in accordance with restoration principles.",
     uses: ["Mould cleanup", "Fire restoration", "Final clean", "Temp management"],
     ref: "IICRC S500 §8 — Environmental Controls"
   },
@@ -1137,7 +1136,7 @@ const EQUIPMENT_ACCORDION_DATA = [
 
 const CHECKLIST_DATA = [
   {
-    phase: "1. Safety & Site Assessment",
+    phase: "Safety & Site Assessment",
     items: [
       { text: "Confirm safe entry — structural integrity, electrical hazards, slip/fall risks assessed", ref: "Safe Work Aust. CoP — Managing WHS Risks" },
       { text: "Identify and document water source category (Cat 1, 2, or 3)", ref: "IICRC S500 §7 — Water Categories" },
@@ -1147,7 +1146,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    phase: "2. Loss Documentation",
+    phase: "Loss Documentation",
     items: [
       { text: "Record loss date, time, and reported cause", ref: "" },
       { text: "Take comprehensive site photographs — all affected areas, all four walls, ceiling, floor", ref: "Insurer documentation requirements" },
@@ -1158,7 +1157,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    phase: "3. Scope & Equipment Setup",
+    phase: "Scope & Equipment Setup",
     items: [
       { text: "Confirm scope with insurer/loss adjuster before equipment placement", ref: "Insurer authority requirements" },
       { text: "Calculate and document equipment required based on affected area and drying class", ref: "IICRC S500 §10 — Equipment Selection" },
@@ -1169,7 +1168,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    phase: "4. Homeowner/Occupant Communication",
+    phase: "Homeowner / Occupant Communication",
     items: [
       { text: "Explain drying process and expected duration to occupant", ref: "Insurance Code of Practice" },
       { text: "Advise occupant on EUC — how to submit and expected compensation", ref: "Insurer EUC policy" },
@@ -1179,7 +1178,7 @@ const CHECKLIST_DATA = [
     ]
   },
   {
-    phase: "5. Monitoring & Drying Program",
+    phase: "Monitoring & Drying Program",
     items: [
       { text: "Schedule and conduct daily or 48hr monitoring visits as required by insurer", ref: "Insurer monitoring requirements" },
       { text: "Record psychrometric readings at each visit in all affected rooms", ref: "IICRC S500 §9.3" },
@@ -1230,36 +1229,25 @@ function addEquipmentRow(preset) {
   const row = document.createElement('div');
   row.className = 'equipment-row';
   row.id = 'eq-row-' + id;
-
   const presetWatts = preset ? preset.watts : 800;
-  const presetLabel = preset ? preset.label : null;
-
   row.innerHTML = `
-    <select onchange="onSelectChange(this, ${id}); calculate()" id="eq-sel-${id}">
-      ${buildEqSelect()}
-    </select>
+    <select onchange="onSelectChange(this, ${id}); calculate()" id="eq-sel-${id}">${buildEqSelect()}</select>
     <input type="number" id="eq-qty-${id}" value="${preset ? preset.qty : 1}" min="1" max="50" oninput="calculate()">
     <input type="number" id="eq-watts-${id}" value="${presetWatts}" min="1" max="10000" oninput="calculate()">
     <button class="btn btn-danger" onclick="removeRow(${id})">×</button>
   `;
   list.appendChild(row);
-
-  if (presetLabel) {
+  if (preset && preset.label) {
     const sel = document.getElementById('eq-sel-' + id);
     for (let opt of sel.options) {
-      if (opt.getAttribute('data-label') === presetLabel) {
-        opt.selected = true;
-        break;
-      }
+      if (opt.getAttribute('data-label') === preset.label) { opt.selected = true; break; }
     }
   }
-
   calculate();
 }
 
 function onSelectChange(sel, id) {
-  const watts = parseInt(sel.value);
-  document.getElementById('eq-watts-' + id).value = watts;
+  document.getElementById('eq-watts-' + id).value = parseInt(sel.value);
 }
 
 function removeRow(id) {
@@ -1271,53 +1259,46 @@ function removeRow(id) {
 
 function calculate() {
   const tariff = parseFloat(document.getElementById('tariff').value) || 0.35;
-  const hours = parseFloat(document.getElementById('hours').value) || 72;
-
+  const hours  = parseFloat(document.getElementById('hours').value) || 72;
   let totalKW = 0;
   equipmentRows.forEach(id => {
     const qtyEl = document.getElementById('eq-qty-' + id);
-    const wEl = document.getElementById('eq-watts-' + id);
+    const wEl   = document.getElementById('eq-watts-' + id);
     if (!qtyEl || !wEl) return;
-    const qty = parseFloat(qtyEl.value) || 1;
-    const watts = parseFloat(wEl.value) || 0;
-    totalKW += (qty * watts) / 1000;
+    totalKW += ((parseFloat(qtyEl.value) || 1) * (parseFloat(wEl.value) || 0)) / 1000;
   });
-
   const totalKWh = totalKW * hours;
   const totalCost = totalKWh * tariff;
   const dailyCost = totalKW * 24 * tariff;
-
-  document.getElementById('euc-total').textContent = '$' + totalCost.toFixed(2);
-  document.getElementById('total-kw').textContent = totalKW.toFixed(3) + ' kW';
-  document.getElementById('total-kwh').textContent = totalKWh.toFixed(1) + ' kWh';
+  document.getElementById('euc-total').textContent  = '$' + totalCost.toFixed(2);
+  document.getElementById('total-kw').textContent   = totalKW.toFixed(3) + ' kW';
+  document.getElementById('total-kwh').textContent  = totalKWh.toFixed(1) + ' kWh';
   document.getElementById('daily-cost').textContent = '$' + dailyCost.toFixed(2) + '/day';
 }
 
 function loadScenario(s) {
   equipmentRows = [];
   document.getElementById('equipment-list').innerHTML = '';
-
   const scenarios = {
     bathroom: [
-      { label: "Low Profile Air Mover", watts: 340, qty: 2 },
+      { label: "Low Profile Air Mover",     watts: 340, qty: 2 },
       { label: "Standard LGR Dehumidifier", watts: 800, qty: 1 },
     ],
     bedroom: [
-      { label: "Axial Air Mover", watts: 600, qty: 3 },
+      { label: "Axial Air Mover",           watts: 600, qty: 3 },
       { label: "Standard LGR Dehumidifier", watts: 800, qty: 1 },
     ],
     lounge: [
-      { label: "Centrifugal Air Mover", watts: 780, qty: 5 },
+      { label: "Centrifugal Air Mover",     watts: 780, qty: 5 },
       { label: "Standard LGR Dehumidifier", watts: 800, qty: 2 },
     ],
     mould: [
-      { label: "Centrifugal Air Mover", watts: 780, qty: 3 },
-      { label: "HEPA Air Scrubber", watts: 475, qty: 1 },
-      { label: "Negative Air Machine", watts: 700, qty: 1 },
+      { label: "Centrifugal Air Mover",     watts: 780, qty: 3 },
+      { label: "HEPA Air Scrubber",         watts: 475, qty: 1 },
+      { label: "Negative Air Machine",      watts: 700, qty: 1 },
       { label: "Standard LGR Dehumidifier", watts: 800, qty: 1 },
     ],
   };
-
   (scenarios[s] || []).forEach(p => addEquipmentRow(p));
 }
 
@@ -1326,17 +1307,14 @@ function loadScenario(s) {
 // ─────────────────────────────────────────────
 function buildAccordion() {
   const container = document.getElementById('equipment-accordion');
-  EQUIPMENT_ACCORDION_DATA.forEach((item, i) => {
+  ACCORDION_DATA.forEach((item, i) => {
     const el = document.createElement('div');
     el.className = 'eq-accordion-item';
     el.id = 'acc-' + i;
-
     const tableRows = item.rows.map(r =>
       `<tr>${r.map((cell, ci) => `<td class="${ci === 2 ? 'watt-val' : ''}">${cell}</td>`).join('')}</tr>`
     ).join('');
-
     const useTags = item.uses.map(u => `<span class="use-tag">${u}</span>`).join('');
-
     el.innerHTML = `
       <div class="eq-accordion-header" onclick="toggleAccordion(${i})">
         <div class="eq-accordion-left">
@@ -1353,9 +1331,9 @@ function buildAccordion() {
           <thead><tr>${item.cols.map(c => `<th>${c}</th>`).join('')}</tr></thead>
           <tbody>${tableRows}</tbody>
         </table>
-        <div style="font-size:12px; color: var(--text-secondary); line-height:1.7; margin-bottom:12px;">${item.note}</div>
+        <div class="eq-note">${item.note}</div>
         <div class="use-tags">${useTags}</div>
-        ${item.ref ? `<div style="font-family: var(--mono); font-size:10px; color: var(--text-muted); margin-top:12px;">${item.ref}</div>` : ''}
+        ${item.ref ? `<div class="eq-ref">${item.ref}</div>` : ''}
       </div>
     `;
     container.appendChild(el);
@@ -1363,36 +1341,34 @@ function buildAccordion() {
 }
 
 function toggleAccordion(i) {
-  const el = document.getElementById('acc-' + i);
-  el.classList.toggle('open');
+  document.getElementById('acc-' + i).classList.toggle('open');
 }
 
 // ─────────────────────────────────────────────
 // CHECKLIST
 // ─────────────────────────────────────────────
 let checkStates = {};
+let phaseOffsets = [];
 
 function buildChecklist() {
   const container = document.getElementById('checklist-container');
   let globalIndex = 0;
-
+  let offset = 0;
   CHECKLIST_DATA.forEach((phase, pi) => {
+    phaseOffsets.push(offset);
+    offset += phase.items.length;
     const phaseEl = document.createElement('div');
     phaseEl.className = 'checklist-phase';
-
-    const header = document.createElement('div');
-    header.className = 'phase-header';
-    header.innerHTML = `
-      <div class="phase-number">${pi + 1}</div>
-      <div class="phase-name">${phase.phase.replace(/^\d+\. /, '')}</div>
-      <div class="phase-progress" id="phase-prog-${pi}">0 / ${phase.items.length}</div>
+    phaseEl.innerHTML = `
+      <div class="phase-header">
+        <div class="phase-number">${pi + 1}</div>
+        <div class="phase-name">${phase.phase}</div>
+        <div class="phase-progress" id="phase-prog-${pi}">0 / ${phase.items.length}</div>
+      </div>
     `;
-    phaseEl.appendChild(header);
-
     phase.items.forEach((item, ii) => {
       const idx = globalIndex++;
       checkStates[idx] = false;
-
       const itemEl = document.createElement('div');
       itemEl.className = 'checklist-item';
       itemEl.id = 'check-' + idx;
@@ -1406,47 +1382,30 @@ function buildChecklist() {
       itemEl.onclick = () => toggleCheck(idx, pi, phase.items.length);
       phaseEl.appendChild(itemEl);
     });
-
     container.appendChild(phaseEl);
   });
   updateProgress();
 }
 
-let phaseOffsets = [];
-function getPhaseOffsets() {
-  if (phaseOffsets.length) return phaseOffsets;
-  let offset = 0;
-  CHECKLIST_DATA.forEach(p => {
-    phaseOffsets.push(offset);
-    offset += p.items.length;
-  });
-  return phaseOffsets;
-}
-
 function toggleCheck(idx, phaseIdx, phaseLen) {
   checkStates[idx] = !checkStates[idx];
   const el = document.getElementById('check-' + idx);
-  if (checkStates[idx]) el.classList.add('checked');
-  else el.classList.remove('checked');
-  updateProgress();
+  el.classList.toggle('checked', checkStates[idx]);
   updatePhaseProgress(phaseIdx, phaseLen);
+  updateProgress();
 }
 
 function updatePhaseProgress(phaseIdx, phaseLen) {
-  const offsets = getPhaseOffsets();
-  const start = offsets[phaseIdx];
+  const start = phaseOffsets[phaseIdx];
   let count = 0;
-  for (let i = start; i < start + phaseLen; i++) {
-    if (checkStates[i]) count++;
-  }
+  for (let i = start; i < start + phaseLen; i++) { if (checkStates[i]) count++; }
   document.getElementById('phase-prog-' + phaseIdx).textContent = `${count} / ${phaseLen}`;
 }
 
 function updateProgress() {
   const total = Object.keys(checkStates).length;
-  const done = Object.values(checkStates).filter(Boolean).length;
-  const pct = total ? (done / total) * 100 : 0;
-  document.getElementById('progress-fill').style.width = pct + '%';
+  const done  = Object.values(checkStates).filter(Boolean).length;
+  document.getElementById('progress-fill').style.width = (total ? (done / total) * 100 : 0) + '%';
 }
 
 function resetChecklist() {
@@ -1477,13 +1436,8 @@ function selectAll() {
 // INIT
 // ─────────────────────────────────────────────
 window.onload = function() {
-  // Default EUC scenario
   loadScenario('bedroom');
-
-  // Build accordion
   buildAccordion();
-
-  // Build checklist
   buildChecklist();
 };
 </script>
